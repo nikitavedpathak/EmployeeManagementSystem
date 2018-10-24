@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+     <meta charset="UTF-8">
+
+    <title>Employee Performance Portal</title>
+</head>
+<body>
+
+<div class="container">
+{% csrf_token %}
+ <h1 class="h2 Bootstrap heading (2rem = 32px) text-primary">Employee Performance Portal </h1>
+    {% for i in Employee %}
+    <p align="right">Logged in as: {{ i.firstName}} {{ i.MiddleName}} {{ i.LastName }} </p>
+    {% endfor %}
+
+
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-sm bg-success navbar-dark h6 heading secondary text">
+        <!-- Links -->
+      <ul class="navbar-nav">
+
+
+        <li class="nav-item">
+           <a class="nav-link" href="home/">Home</a>
+        </li>
+          <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Manage Account
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">View Account</a>
+            <a class="dropdown-item" href="#">Edit Account </a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Performance Portal
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="viewtask/">View Tasks</a>
+            <a class="dropdown-item" href="eperformance/">Add New Task</a>
+          </div>
+        </li>
+
+        <li>
+            <a class="nav-link" href="logout/">Log out</a>
+        </li>
+      </ul>
+    </nav>
+
+</div>
+
+
+
+
+<table class="table table-bordered" style="margin-left:150px; width:75%;" >
+    <thead>
+    <tr>
+        <th>Task ID </th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+    </tr>
+    </thead>
+
+   {% for i in Tasks %}
+    <tbody>
+    <tr>
+
+      <td>{{ i.Task_id}}</td>
+      <td>{{ i.Task_description}}</td>
+      <td>{{ i.Start_date }}</td>
+      <td>{{ i.End_Date }}</td>
+
+
+    </tr>
+    </tbody>
+  {% endfor %}
+
+</table>
+
+
+</body>
+</html>
